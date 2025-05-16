@@ -1,0 +1,2 @@
+<?php
+$TMDB_API_KEY = "7ab7b8e64f4b031bbd2f0744a187b129";
