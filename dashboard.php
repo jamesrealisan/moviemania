@@ -14,31 +14,7 @@ $result = $conn->query("SELECT * FROM movies");
 <head>
     <title>Dashboard - MovieMania</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            animation: fadeIn 0.5s ease;
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .movie-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
-        .card img {
-            height: 300px;
-            object-fit: cover;
-        }
-    </style>
+    <link href="css/dashboard.css" rel="stylesheet" />
 </head>
 <body>
 <div class="container mt-4">
