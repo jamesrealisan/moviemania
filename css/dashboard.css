@@ -1,12 +1,22 @@
 /* dashboard.css */
 
 /* General body and container styling */
+/* style.css */
 body {
-    background-color: #000;
-    color: #fff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    min-height: 100vh;
+    background-image: url('../assets/dashboardbg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
 }
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 
 .container {
     max-width: 1200px;
@@ -161,3 +171,15 @@ body {
         transform: translateY(0);
     }
 }
+
+.movie-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .card {
+            width: 15rem;
+        }
+        #searchResults, #recommendedMovies, #localMovies {
+            margin-bottom: 2rem;
+        }

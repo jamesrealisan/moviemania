@@ -22,4 +22,19 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL
 );
 
+DATABASE CODE FOR REVIEWS:
+
+DROP TABLE IF EXISTS reviews;
+
+CREATE TABLE reviews (
+    review_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    movie_id INT NOT NULL,
+    rating INT NOT NULL,
+    comment TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users(id),
+    CONSTRAINT fk_movie FOREIGN KEY (movie_id) REFERENCES movies(movie_id)
+) ENGINE=InnoDB;
+
 
