@@ -14,8 +14,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($res->num_rows == 1) {
         $user = $res->fetch_assoc();
         if (password_verify($password, $user['password'])) {
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['username'];  // optional for greetings
+            // Fixed this line: use user_id, not id
+            $_SESSION['user_id'] = $user['user_id'];
+            $_SESSION['username'] = $user['username'];
             header("Location: dashboard.php");
             exit();
         }
@@ -36,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 <div class="auth-container">
     <h2>Login to MovieMania</h2>
-    <?php if (isset($error)) echo "<div class='alert'>$error</div>"; ?>
+    <?php if (isset($error)) echo "<div class='alert alert-danger'>$error</div>"; ?>
     <form method="POST">
         <div class="mb-3">
             <label>Username</label>
