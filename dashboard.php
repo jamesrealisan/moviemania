@@ -6,7 +6,13 @@ if (!isset($_SESSION['user_id'])) {
 }
 include 'db.php';
 
-$result = $conn->query("SELECT * FROM movies");
+$user_id = $_SESSION['user_id'];
+$stmt = $conn->prepare("SELECT m.* FROM movies m 
+                        JOIN reviews r ON m.movie_id = r.movie_id 
+                        WHERE r.user_id = ?");
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
 ?>
 
 <!DOCTYPE html>
@@ -38,8 +44,12 @@ $result = $conn->query("SELECT * FROM movies");
     </div>
 
     <h3>Your Movies</h3>
-    <div id="localMovies" class="movie-grid">
-        <?php while($row = $result->fetch_assoc()): ?>
+<div id="localMovies" class="movie-grid">
+    <?php if ($result->num_rows === 0): ?>
+        <p>You haven't reviewed any movies yet.</p>
+    <?php endif; ?>
+
+    <?php while($row = $result->fetch_assoc()): ?>
             <div class="card">
                 <img src="<?= htmlspecialchars($row['poster_url']) ?>" alt="<?= htmlspecialchars($row['title']) ?>" class="card-img-top">
                 <div class="card-body">

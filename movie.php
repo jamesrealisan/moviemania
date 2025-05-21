@@ -25,7 +25,7 @@ $avg_result = $avg_stmt->get_result()->fetch_assoc();
 $avg_rating = round($avg_result['avg_rating'], 1);
 
 // Get all reviews
-$review_stmt = $conn->prepare("SELECT r.rating, r.comment, r.created_at, u.username 
+$review_stmt = $conn->prepare("SELECT r.review_id, r.rating, r.comment, r.created_at, r.user_id, u.username 
     FROM reviews r 
     JOIN users u ON r.user_id = u.user_id 
     WHERE r.movie_id = ? 
@@ -115,6 +115,14 @@ $reviews = $review_stmt->get_result();
                 </span>
                 <p><?= nl2br(htmlspecialchars($review['comment'])) ?></p>
                 <small class="text-muted"><?= $review['created_at'] ?></small>
+                <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $review['user_id']): ?>
+    <form method="POST" action="delete_review.php" onsubmit="return confirm('Are you sure you want to delete this review?');">
+        <input type="hidden" name="review_id" value="<?= $review['review_id'] ?>">
+        <input type="hidden" name="movie_id" value="<?= $movie_id ?>">
+        <button type="submit" class="btn btn-sm btn-danger mt-2">Delete</button>
+    </form>
+<?php endif; ?>
+
             </div>
         <?php endwhile; ?>
     <?php else: ?>
