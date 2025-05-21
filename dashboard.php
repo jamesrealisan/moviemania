@@ -37,16 +37,16 @@ $result = $stmt->get_result();
         <a href="logout.php" class="btn btn-danger">Logout</a>
     </div>
 
-    <h3>Recommended Movies</h3>
+    <h3 style="color: white; font-weight: bold;">Recommended Movies</h3>
     <div id="recommendedMovies" class="movie-grid">
         <!-- Recommended movies from TMDb will load here -->
         <p>Loading recommended movies...</p>
     </div>
 
-    <h3>Your Movies</h3>
+    <h3 style="color: white; font-weight: bold;">Your Movies</h3>
 <div id="localMovies" class="movie-grid">
     <?php if ($result->num_rows === 0): ?>
-        <p>You haven't reviewed any movies yet.</p>
+        <p style="color: white; font-weight: bold;">You haven't reviewed any movies yet.</p>
     <?php endif; ?>
 
     <?php while($row = $result->fetch_assoc()): ?>

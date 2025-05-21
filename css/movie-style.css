@@ -1,0 +1,60 @@
+body {
+    background: url('../assets/moviebg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #f0f0f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    animation: fadeIn 1s ease-in;
+}
+a, .btn {
+    transition: all 0.3s ease;
+}
+
+a:hover, .btn:hover {
+    transform: scale(1.05);
+}
+
+.card {
+    background-color: rgba(20, 20, 20, 0.9);
+    border: 1px solid #444;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+    transform: translateY(-5px);
+}
+
+h2, h4 {
+    color: #ff4c4c;
+}
+
+textarea, .form-control {
+    background-color: #1a1a1a;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+.btn-success {
+    background-color: #00bcd4;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #0097a7;
+}
+
+.btn-secondary {
+    background-color: #333;
+    border: none;
+}
+
+.star-rating label {
+    transition: color 0.2s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
