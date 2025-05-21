@@ -37,3 +37,5 @@ CREATE TABLE reviews (
     CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users(id),
     CONSTRAINT fk_movie FOREIGN KEY (movie_id) REFERENCES movies(movie_id)
 ) ENGINE=InnoDB;
+
+ALTER TABLE movies ADD COLUMN overview TEXT;
